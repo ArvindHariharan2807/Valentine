@@ -1,0 +1,44 @@
+<div class="stage">
+
+  <!-- LEFT CURTAIN -->
+  <div class="curtain curtain-left" [class.open]="opened"></div>
+
+  <!-- RIGHT CURTAIN -->
+  <div class="curtain curtain-right" [class.open]="opened"></div>
+
+  <!-- SPOTLIGHT -->
+  <div class="spotlight" [class.open]="opened"></div>
+
+  <!-- ✨ DUST PARTICLES -->
+  <div class="dust-layer" [class.open]="opened">
+    @for (p of particles; track $index) {
+      <span
+        class="dust"
+        [style.left.%]="p.left"
+        [style.top.%]="p.top"
+        [style.width.px]="p.size"
+        [style.height.px]="p.size"
+        [style.animationDelay.s]="p.delay">
+      </span>
+    }
+  </div>
+
+  <!-- KNOT -->
+  <div class="knot" [class.untie]="opened">🎀</div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h1>Hi Gopika 💖</h1>
+    <p class="subtitle">
+      This is a small gift for this Valentine
+    </p>
+
+    <button
+      class="open-btn"
+      (click)="openGift()"
+      [disabled]="opened">
+      ✨ Open Your Surprise ✨
+    </button>
+  </div>
+
+</div>

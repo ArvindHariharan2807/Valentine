@@ -1,0 +1,53 @@
+
+<!-- 🌙 MOON -->
+<section *ngIf="scene === 'moon'" class="moon-page">
+  <div class="moon"
+       [style.transform]="'translate(' + moonX + 'px,' + moonY + 'px)'">
+  </div>
+
+  <div class="moon-content">
+    <h1>Every Love Lives Under One Moon</h1>
+    <p>✨ Tonight, memories become gifts</p>
+    <button class="cta" (click)="collectGifts()">Collect Gifts 💝</button>
+  </div>
+</section>
+
+<!-- 🎁 GIFTS -->
+<section *ngIf="scene === 'gifts'" class="gifts">
+  <h1 class="gifts-title">Valentine Week 💝</h1>
+  <p class="gifts-subtitle">One day. One feeling. All for you ❤️</p>
+
+  <div class="grid">
+    <div class="box" *ngFor="let gift of gifts; let i = index"
+         [class.center]="i === 7">
+
+      <div class="gift" *ngIf="gift.state === 'closed'"
+           (click)="openGift(gift)">
+        <div class="lid"></div>
+        <div class="base"></div>
+        <span>{{ gift.title }}</span>
+      </div>
+
+      <div class="open" *ngIf="gift.state === 'open'">
+  <img [src]="gift.bg" alt="gift image" />
+
+  <h3>{{ gift.title }}</h3>
+<p class="message">{{ gift.message }}</p>
+
+
+
+  <button (click)="closeGift(gift)">Close 🎁</button>
+</div>
+
+    </div>
+  </div>
+
+  <button class="close" (click)="goToRing()">Close Gifts 💝</button>
+</section>
+
+<!-- 💍 RING -->
+<section *ngIf="scene === 'ring'" class="ring">
+  <div class="kneel">🧎‍♂️</div>
+  <div class="ring-box" (click)="restart()">💍</div>
+  <p>Tap the ring ❤️</p>
+</section>
